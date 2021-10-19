@@ -1,7 +1,7 @@
 {
-  "name": "newsnlp",
+  "name": "travelapp",
   "version": "1.0.0",
-  "description": "udacity project article news analysis",
+  "description": "Travel App Udacity",
   "main": "index.js",
   "scripts": {
     "test": "jest",
