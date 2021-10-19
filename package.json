@@ -7,7 +7,7 @@
     "test": "jest",
     "prod": "webpack --config prod.config.js",
     "dev": "webpack serve --config dev.config.js --open",
-    "start": "node src/server/index.js"
+    "start": "node src/server/server.js"
   },
   "author": "sifelkateb",
   "license": "ISC",
