@@ -55,7 +55,7 @@ const getImage = async (input,backup='') => {
     }
     else 
     {
-       console.log(response.data.hits[0].largeImageURL);
+       return response.data.hits[0].largeImageURL
     }
   } catch (error) {
     console.log(error);
@@ -66,18 +66,12 @@ const getData=async(location,future)=>{
   const {lat,lng,population,countryName}= await getCoordinates(location);
   const  {temp,weather:{description,icon},wind_spd:windSpeed,clouds,rh:humidity}=await getWeather(lng,lat,future);
   const weatherImg=`https://www.weatherbit.io/static/img/icons/${icon}.png`;
-  const locationImg=getImage(location,countryName);
-  return {countryName,population,temp,description,weatherImg,locationImg};
-  
+  const locationImg=await getImage(location,countryName);
+  return {countryName,population,temp,description,weatherImg,locationImg,windSpeed,clouds,humidity};
   }
   catch(error)
   {
     console.log(error);
   }
 }
-//  getCurrentWeather(30.46823,31.03408);
-// getCoordinates('xx');
-// getFutureForecast(30.46823,31.03408);
-// getImage('london');
-// getData('cairo',0);
-getImage("berlin", "united kingdom");
+// getData('cairo',0).then(response=>console.log(response));
