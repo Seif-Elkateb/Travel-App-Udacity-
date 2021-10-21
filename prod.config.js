@@ -7,7 +7,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports={
-  entry:["regenerator-runtime/runtime.js",'./src/client/app.js'],
+  entry:'./src/client/app.js',
   mode:'production',
   output:{
     path:path.resolve(__dirname,'dist'),
@@ -44,7 +44,7 @@ module.exports={
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread']
+            plugins: ['@babel/plugin-transform-runtime']
           }
         }
       },
