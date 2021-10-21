@@ -1,0 +1,21 @@
+#left-img,#right-img{
+  position: absolute;
+  width:22%;
+  height: auto;
+  max-width: 100%;
+  opacity: .9;
+}
+#left-img{
+  left:80px;
+  top:100px;
+}
+#right-img{
+  right:80px;
+  top:150px;
+}
+@media (max-width:1024px)
+{
+  #left-img,#right-img{
+    display: none ;
+  }
+}
