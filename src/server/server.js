@@ -7,6 +7,7 @@ dotenv.config();
 /* Dependencies */
 const bodyParser = require("body-parser");
 const port = 8081;
+
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require("cors");
 const { json } = require("body-parser");
+const { response } = require("express");
 app.use(cors());
 app.use(express.static("dist"));
 // creating the server
@@ -21,7 +23,7 @@ const listening = () => {
   console.log("initialize server:\n");
   console.log(`server running on port ${port}`);
 };
-// const server= app.listen(port,listening);
+const server= app.listen(port,listening);
 
 const getCoordinates = async (location) => {
   const url = `http://api.geonames.org/searchJSON?q=${location}&maxRows=1&username=${process.env.geonames}`;
@@ -74,4 +76,8 @@ const getData=async(location,future)=>{
     console.log(error);
   }
 }
-// getData('cairo',0).then(response=>console.log(response));
+app.post('/senddata',async(req,res)=>{
+    const userInput=req.body;
+    const traveData=await getData(userInput.location,userInput.future);
+    res.send(traveData);
+})

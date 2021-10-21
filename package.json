@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "prod": "webpack --config prod.config.js",
-    "dev": "webpack  --config dev.config.js ",
+    "dev": "webpack  serve --config dev.config.js --open ",
     "start": "node src/server/server.js"
   },
   "author": "sifelkateb",

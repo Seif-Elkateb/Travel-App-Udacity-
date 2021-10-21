@@ -9,8 +9,12 @@ export const postData=async(url,data)=>{
     },
     body: JSON.stringify(data)
   });
+    if(response.ok===false)
+    {
+      throw new Error('request failed');
+    }
   const  responseData= await response.json();
-  console.log(responseData);
+      return responseData;
 }
 catch(error)
 {
