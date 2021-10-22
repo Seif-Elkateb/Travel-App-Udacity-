@@ -1,6 +1,7 @@
+// get the number of days / months /years between the travel date and today
 export const countDown=(travelDate)=>{
-  const today= new Date();
-  const travelDay= travelDate.getDate();
+  const today= new Date(); 
+  const travelDay= travelDate.getDate(); 
   const travelMonth= travelDate.getMonth();
   const travelYear=travelDate.getFullYear();
   const currentDay=today.getDate();

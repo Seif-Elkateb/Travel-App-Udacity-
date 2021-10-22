@@ -1,4 +1,4 @@
-
+// post user input to the server
 export const postData=async(url,data)=>{
   try{
   const response= await fetch(url,{
@@ -9,6 +9,7 @@ export const postData=async(url,data)=>{
     },
     body: JSON.stringify(data)
   });
+    //check if the response is not oky 
     if(response.ok===false)
     {
       throw new Error('request failed');
@@ -20,5 +21,4 @@ catch(error)
 {
   console.log(error);
 }
-
 }
