@@ -1,16 +1,28 @@
 h1{
+  position: relative;
   text-align: center;
   font-style: italic;
   background-color: #317A45;
   width: 600px;
   font-size:30px;
-  padding:10px;
   transform: rotate(-1deg);
   border-radius: 16px;
   font-family: 'Sriracha', sans-serif;
+  padding:10px;
   margin: 30px auto 10px;
   color:white;
   display: block;
+}
+.homepage-icon{
+  position: absolute;
+  // transform: rotate(-1deg);
+  left:20px;
+  top:10px;
+  width:40px;
+  height:auto;
+}
+.homepage-icon:hover{
+  width:42px;
 }
 @media (max-width:768px)
 {
@@ -27,5 +39,11 @@ h1{
     width:300px;
     padding:5px;
     font-size:20px;
+  }
+  .homepage-icon{
+    width:20px;
+  }
+  .homepage-icon:hover{
+    width:21px;
   }
 }

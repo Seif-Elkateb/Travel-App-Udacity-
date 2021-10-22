@@ -90,7 +90,12 @@ const getTravelData = async () => {
     setTimeout(() => {
       alert('the location you entered is not found ');
     }, 500);
+    
     inputContainer.style.display='block';
+    startDate.value='';
+    endDate.value='';
+    inputLocation.value='';
+    return;
   }
   // hide the preloader after fetching done
   console.log(response);
