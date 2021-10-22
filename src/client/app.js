@@ -72,16 +72,14 @@ const setLimit = () => {
   endDate.setAttribute("min", tempDate2); // setting the min for endDate to be startDate if it's set or today
 };
 const getTravelData = async () => {
+  try{
   if(!checkvalues())
     return ;
   inputContainer.style.display='none'; // hide the inputs div
   preloader.style.display='block';  // start the preloader
   const x = startDate.valueAsDate; // get the value of the start date as a date object
-  console.log(x);
   const days = measureDays(x); // call the measureDays function to get n_OF_days between today and start date
-  console.log(days);
   const future = days > 7 ? 1 : 0; // set boolean value to 1 if days>7 or 0 if days <7;
-  console.log(future);
   const location = inputLocation.value;
   await postData("http://localhost:8081/senddata", { future, location }); // get the response from the server
   const response= await getData("http://localhost:8081/getdata");
@@ -100,6 +98,10 @@ const getTravelData = async () => {
   // hide the preloader after fetching done
   console.log(response);
   updateUi(response);
+}
+catch(error){
+  console.log(error);
+}
 };
 const updateUi=(response)=>{
   locationImg.setAttribute('src',response.locationImg);

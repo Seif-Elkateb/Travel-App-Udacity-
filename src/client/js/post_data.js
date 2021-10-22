@@ -1,7 +1,7 @@
 // post user input to the server
 export const postData=async(url,data)=>{
   try{
-   await fetch(url,{
+   const response=await fetch(url,{
     method:'POST',
     credentials: 'same-origin',
     headers: {

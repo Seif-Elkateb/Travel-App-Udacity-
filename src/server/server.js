@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 /* Dependencies */
 const bodyParser = require("body-parser");
-const port = 8081;
+
 let travelData={};
 
 /* Middleware*/
@@ -17,12 +17,7 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(cors());
 app.use(express.static("dist"));
-// creating the server
-const listening = () => {
-  console.log("initialize server:\n");
-  console.log(`server running on port ${port}`);
-};
-const server= app.listen(port,listening);
+
 
 //get the coordinates from geonames api depending on the location provided 
 const getCoordinates = async (location) => {
@@ -93,14 +88,21 @@ const getData=async(location,future)=>{
     console.log(error);
   }
 }
+//test route
+app.get('/test',(req,res)=>{
+  console.log('new request to /test route');
+  res.send({message:'hello world'});
+
+})
 app.post('/senddata',async(req,res)=>{
     console.log('new request to /senddata route\n',req.body)
     const userInput=req.body; // get body of the request 
     travelData=await getData(userInput.location,userInput.future); // get travel data 
-    res.send('');
+    res.send();
 })
 app.get('/getdata',(req,res)=>{
   console.log('new request to /getdata route');
   res.send(travelData);
 
 })
+module.exports=app;
