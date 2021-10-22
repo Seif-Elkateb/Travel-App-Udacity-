@@ -9,30 +9,54 @@
 </head>
 
 <body>
-  <img id='left-img' src="../images/travel.png" alt="">
-  <img id='right-img' src="../images/travel2.png" alt="">
+
   <div class="container">
     <h1>Your Trip Guide</h1>
-    <div class="inputs">
-      <div class="input-container">
-        <label for="location">Location </label> <input type="text" id='location' placeholder="City">
+    <img id='img-preloader' src="../images/preloader.gif" alt="earth-rotating">
+    <div class="output">
+      <div class="general-trip-info">
+        <img src="#" alt="location-img" id='location-img'>
+        <div class="trip-details">
+          <div class="trip-start-date trip-detail" id="trip-start-date"></div>
+          <div class="trip-Length trip-detail" id="trip-length"></div>
+          <div class="trip-country trip-detail" id="trip-country"></div>
+          <div class="trip-city trip-detail" id="trip-city"></div>
+          <div class="countdown trip-detail" id="countdown"></div>
+        </div>
+      </div>
+      <div class="weather-information">
+        <figure>
+          <img src="#" alt="weather-img" id ='weather-img'>
+          <figcaption id ='weather-description'></figcaption>
+        </figure>
+        <div class='temp' id='temp'></div>
+        <div class="general-weather-info">
+          <div class="humidity" id="humidity"></div>
+          <div class="wind-speed" id="wind-speed"></div>
+          <div class="clouds" id="clouds"></div>
+        </div>
+      </div>
       </div>
 
-      <div class="input-container">
-        <label for="start-date">Start Date </label> <input type="date" id='start-date'>
-      </div>
-      <div class="input-container">
-        <label for="end-date">End Date</label> <input type="date" id='end-date'>
-      </div>
-      <button id='submit-data'>
-        Submit
-      </button>
 
-
-
+  <div class='inputs'>
+    <img id='left-img' src="../images/travel.png" alt="travel">
+    <img id='right-img' src="../images/travel2.png" alt="travel">
+    <div class="input-container">
+      <label for="location" class='label-box'>Location </label> <input type="text" id='location' placeholder="City" required>
     </div>
 
+    <div class="input-container">
+      <label for="start-date" class='label-box'>Start Date </label> <input type="date" id='start-date' class='text-box' required>
+    </div>
+    <div class="input-container">
+      <label for="end-date" class='label-box'>End Date</label> <input type="date" id='end-date'class='text-box' required>
+    </div>
+    <input type="submit" id='submit-data' value='submit'>
+
+    </form>
   </div>
+
 </body>
 
 </html>

@@ -1,0 +1,93 @@
+.output{
+  display: none;
+}
+.general-trip-info{
+  width:fit-content;
+  display: flex;
+  margin:20px auto;
+  background-color: #fcfdfd;
+  border:3px solid rgba(133, 174, 133, 0.652);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding:10px;
+  
+
+}
+#location-img{
+  width:400px;
+  height:auto;
+  max-width: 100%;
+  display: block;
+
+}
+#weather-img,figure{
+  width:60px;
+  height:auto;
+}
+.weather-information{
+  width:700px;
+  max-width:100%;
+  padding:10px;
+  background-color: #fcfdfd;
+  border:3px solid rgba(133, 174, 133, 0.652);
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:auto;
+}
+
+#weather-description{
+  background-size: cover;
+  font-family:monospace;
+  font-weight: bold;
+  font-size:20px;
+  color: rgba(0,0,0,0.7);
+}
+.temp{
+  font-size:40px;
+
+}
+.general-weather-info,.trip-details{
+  font-size:20px;
+  font-weight:bold;
+  color: rgba(0,0,0,0.7);
+  font-style:italic;
+}
+.trip-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding:5px;
+}
+.trip-detail{
+  margin-top: 10px;
+}
+
+
+@media (max-width:560px){
+  .weather-information{
+    border-style: none;
+  }
+
+  .temp{
+    font-size:20px;
+  }
+  #weather-description{
+    font-size:16px;
+  }
+  .weather-img,figure{
+    width:20px;
+    height:auto;
+  }
+  .general-weather-info,.trip-details{
+    font-size:16px;
+  }
+  .trip-details{
+    padding:0;
+  }
+  .general-trip-info{
+    padding:0;
+  }
+}

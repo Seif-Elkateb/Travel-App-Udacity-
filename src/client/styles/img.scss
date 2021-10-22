@@ -13,6 +13,15 @@
   right:80px;
   top:150px;
 }
+#img-preloader{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width:100px;
+  height:auto;
+  display: none;
+}
 @media (max-width:1024px)
 {
   #left-img,#right-img{
