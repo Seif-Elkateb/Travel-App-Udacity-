@@ -1,7 +1,7 @@
 // post user input to the server
 export const postData=async(url,data)=>{
   try{
-  const response= await fetch(url,{
+   await fetch(url,{
     method:'POST',
     credentials: 'same-origin',
     headers: {
@@ -14,8 +14,6 @@ export const postData=async(url,data)=>{
     {
       throw new Error('request failed');
     }
-  const  responseData= await response.json();
-      return responseData;
 }
 catch(error)
 {

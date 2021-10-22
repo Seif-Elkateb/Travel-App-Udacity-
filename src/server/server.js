@@ -7,6 +7,7 @@ dotenv.config();
 /* Dependencies */
 const bodyParser = require("body-parser");
 const port = 8081;
+let travelData={};
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -14,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require("cors");
-const { json } = require("body-parser");
-const { response } = require("express");
 app.use(cors());
 app.use(express.static("dist"));
 // creating the server
@@ -97,6 +96,11 @@ const getData=async(location,future)=>{
 app.post('/senddata',async(req,res)=>{
     console.log('new request to /senddata route\n',req.body)
     const userInput=req.body; // get body of the request 
-    const traveData=await getData(userInput.location,userInput.future); // get travel data 
-    res.send(traveData);
+    travelData=await getData(userInput.location,userInput.future); // get travel data 
+    res.send('');
+})
+app.get('/getdata',(req,res)=>{
+  console.log('new request to /getdata route');
+  res.send(travelData);
+
 })

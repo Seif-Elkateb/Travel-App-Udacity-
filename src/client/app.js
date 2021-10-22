@@ -5,6 +5,7 @@ import { postData } from "./js/post_data.js"; // responsible for posting data to
 import { countDown } from "./js/count_down.js"; // responsible for count down feature
 import { getDate } from "./js/get_date.js"; // responsible for getting the current date formated so it date limit could be set to date inputs
 import { measureDays } from "./js/measure_days.js"; // responsilbe for deciding the number of days between today and the travel date
+import { getData } from "./js/get_data.js";
 import "./styles/style.scss"; // import scss
 
 /*
@@ -82,7 +83,8 @@ const getTravelData = async () => {
   const future = days > 7 ? 1 : 0; // set boolean value to 1 if days>7 or 0 if days <7;
   console.log(future);
   const location = inputLocation.value;
-  const response = await postData("http://localhost:8081/senddata", { future, location }); // get the response from the server
+  await postData("http://localhost:8081/senddata", { future, location }); // get the response from the server
+  const response= await getData("http://localhost:8081/getdata");
   preloader.style.display='none';
   if(response.result==='none'){
     setTimeout(() => {
