@@ -23,6 +23,16 @@ const preloader= document.querySelector('#img-preloader');
 const locationImg= document.querySelector('#location-img');
 const weatherImg= document.querySelector('#weather-img');
 const output= document.querySelector('.output');
+const weatherDescription= document.querySelector('#weather-description');
+const tempResult= document.querySelector('#temp');
+const windSpeedResult=document.querySelector('#wind-speed');
+const cloudsResult= document.querySelector('#clouds');
+const humidityResult=document.querySelector('#humidity');
+const tripStartResult= document.querySelector('#trip-start-date');
+const tripCountryResult=document.querySelector('#trip-country');
+const tripCityResult=document.querySelector('#trip-city');
+const tripLengthResult=document.querySelector('#trip-length');
+const countdownResult=document.querySelector('#countdown');
 
 /*
 end define globals
@@ -66,8 +76,11 @@ const getTravelData = async () => {
   inputContainer.style.display='none'; // hide the inputs div
   preloader.style.display='block';  // start the preloader
   const x = startDate.valueAsDate; // get the value of the start date as a date object
+  console.log(x);
   const days = measureDays(x); // call the measureDays function to get n_OF_days between today and start date
+  console.log(days);
   const future = days > 7 ? 1 : 0; // set boolean value to 1 if days>7 or 0 if days <7;
+  console.log(future);
   const location = inputLocation.value;
   const response = await postData("http://localhost:8081/senddata", { future, location }); // get the response from the server
   preloader.style.display='none';
@@ -79,10 +92,24 @@ const getTravelData = async () => {
   }
   // hide the preloader after fetching done
   console.log(response);
-
+  updateUi(response);
 };
-
-
+const updateUi=(response)=>{
+  locationImg.setAttribute('src',response.locationImg);
+  weatherImg.setAttribute('src',response.weatherImg);
+  weatherDescription.innerHTML=response.description;
+  tempResult.innerHTML=response.temp+'&deg';
+  cloudsResult.innerHTML='clouds '+response.clouds+'&deg';
+  humidityResult.innerHTML='Humidity '+response.humidity+'&deg';
+  windSpeedResult.innerHTML='Wind Speed '+Math.round(response.windSpeed)+' M/S';
+  tripStartResult.innerHTML='Trip Starts in '+startDate.value;
+  tripLengthResult.innerHTML='Trip Length is '+ measureDays(startDate.valueAsDate,endDate.valueAsDate)+' days';
+  tripCountryResult.innerHTML='Country Name  '+response.countryName ;
+  tripCityResult.innerHTML='City Name '+response.locationName;
+  const countdownObject= countDown(startDate.valueAsDate);
+  countdownResult.innerHTML='Countdown '+countdownObject.year+' years:'+countdownObject.month+' months:'+ countdownObject.day+' days';
+  output.style.display='block';
+}
 /*
 end functions
 */
